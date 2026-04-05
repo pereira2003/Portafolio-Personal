@@ -2255,10 +2255,10 @@ body.animate-fold {
   border: 1px solid rgba(41, 151, 255, 0.28);
   background: rgba(15, 63, 121, 0.82);
   color: #ffffff !important;
-  font-size: 0.72rem !important;
+  font-size: 0.78rem !important;
   font-weight: 700 !important;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  text-transform: none;
 }
 
 /* Mobile: ordered row cards similar to services list */
@@ -2316,20 +2316,14 @@ body.animate-fold {
     align-self: start;
     justify-self: start;
     margin-right: 0.8rem;
-    padding: 0.3rem 0.62rem;
+    padding: 0.34rem 0.65rem;
     border-radius: 999px;
-    font-size: 0.64rem !important;
-    letter-spacing: 0.1em;
+    font-size: 0.72rem !important;
+    letter-spacing: 0.03em;
     background: rgba(15, 63, 121, 0.11);
     border: 1px solid rgba(15, 63, 121, 0.24);
     color: #103766 !important;
-  }
-
-  .portfolio-item[data-date] .portfolio-item__title::after {
-    content: "  ·  " attr(data-date);
-    color: rgba(16, 55, 102, 0.75);
-    font-weight: 600;
-    letter-spacing: 0.05em;
+    text-transform: none;
   }
 }
 
