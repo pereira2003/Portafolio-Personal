@@ -461,7 +461,7 @@
                 };
             });
 
-            modalEls.wrapper.style.display = 'block';
+            modalEls.wrapper.style.display = 'flex';
             modalEls.wrapper.setAttribute('aria-hidden', 'false');
 
             setTimeout(function () {
@@ -513,7 +513,7 @@
         });
 
         document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape' && modalEls.wrapper.style.display === 'block') {
+            if (e.key === 'Escape' && modalEls.wrapper.style.display === 'flex') {
                 closeModal();
             }
         });

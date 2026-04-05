@@ -15,8 +15,7 @@
 
     <!-- CSS
     ================================================== -->
-    <link rel="stylesheet" href="css/vendor.css">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/rebranding.css">
 
     <!-- favicons
     ================================================== -->
@@ -28,14 +27,14 @@
 </head>
 
 <body id="top">
+
     
     <!-- preloader
     ================================================== -->
     <div id="preloader">
-        <div id="loader" class="dots-fade">
-            <div></div>
-            <div></div>
-            <div></div>
+        <div class="rb-preloader-inner">
+            <div class="rb-preloader-logo">AP</div>
+            <div class="rb-preloader-line"></div>
         </div>
     </div>
 
@@ -54,10 +53,14 @@
                     <div class="header-brand">
                         <a class="header-brand__link" href="index.html">
                             <img class="header-brand__avatar" src="images/header-avatar.jpg" alt="">
-                            <span class="header-brand__text">Abrahan Pereira</span>
+                            <span class="header-brand__text">Abrahan Navarro Pereira</span>
                         </a>
                     </div>
-                    <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
+                    <a class="header-menu-toggle" href="#0" aria-label="Menu">
+                        <span class="rb-bar"></span>
+                        <span class="rb-bar"></span>
+                        <span class="rb-bar"></span>
+                    </a>
                 </div> <!-- end s-header__block -->
             
                 <nav class="header-nav">    
@@ -78,17 +81,23 @@
         ================================================== -->
         <section id="intro" class="s-intro target-section">
 
+            <!-- Grid decoration -->
+            <div class="rb-hero-grid" aria-hidden="true"></div>
+
+            <!-- Floating particles -->
+            <div class="rb-particles" aria-hidden="true" id="rb-particles"></div>
+
             <div class="container s-intro__inner">
 
                 <div class="row intro-content-wrap">  
                     <div class="column xl-11 intro-content">
-                        <div class="intro-content__overline">Junior Front-end developer  Since 2022</div>
+                        <div class="intro-content__overline">Junior Front-end developer &mdash; Since 2022</div>
                         <h1 class="intro-content__big-type">
-                            <img class="intro-content__img-text" src="hero-big-type.svg" alt="" role="presentation" onerror="this.style.display='none'; this.previousElementSibling.classList.remove('u-sr-hidden');" />
-                            <span class="intro-content__text u-sr-hidden">Abrahan Pereira</span>
+                            <span class="intro-content__text" id="rb-hero-name">Abrahan Navarro Pereira</span>
                         </h1>
-                        <p class="intro-content__desc lead">
-                            Hola, Soy Abrahan Pereira — Soy un desarrollador front-end en formación, apasionado por transformar ideas en experiencias digitales intuitivas, atractivas y centradas en las personas. Mi trayectoria combina ingeniería de software, diseño multimedia, marketing digital y creatividad visual, lo que me permite construir interfaces modernas que unen funcionalidad y narrativa. Con una base sólida en programación y un enfoque en usabilidad, busco aportar soluciones que conecten con los usuarios y reflejen autenticidad. Además de mi trabajo técnico, disfruto explorar tendencias emergentes, perfeccionar mis habilidades en diseño y compartir conocimiento para inspirar a otros en su camino profesional.
+                        <p class="intro-content__desc lead" id="rb-hero-desc">
+                            Hola, Soy Abrahan Navarro Pereira — desarrollador front-end apasionado por transformar ideas en experiencias digitales intuitivas y centradas en las personas. Combino ingeniería de software, diseño multimedia y creatividad visual para construir interfaces modernas que unen funcionalidad con narrativa.
+                        </p>
                     </div> <!-- end intro-main -->               
                 </div> <!-- end intro-main-wrap -->
 
@@ -109,34 +118,33 @@
 
                 <div class="s-about__inner container">
 
-                    <div class="grid-block">
+                    <div class="s-about-header" data-rb-reveal>
+                        <h2 data-num="01" class="section-title">Acerca de mí</h2>
+                    </div>
 
-                        <div class="grid-block__item s-about__header">
-                            <h2 data-num="01" class="section-title">Acerca de mí</h2>
-                        </div> <!--end s-about__header -->
-
-                        <div class="grid-block__item s-about__media">
+                    <div class="s-about-content">
+                        <!-- Profile card -->
+                        <div class="about-card" data-rb-reveal="left">
                             <figure class="about-profile-pic">
                                 <img src="images/profile-pic.jpg" srcset="images/profile-pic.jpg 1x, 
-                                          images/profile-pic@2x.jpg 2x" alt="Pete Waldo Profile Picture">
+                                          images/profile-pic@2x.jpg 2x" alt="Abrahan Navarro Pereira">
                             </figure>
-                        </div> <!--end s-about__media -->
+                            <h3 class="about-card__name">Abrahan Navarro Pereira</h3>
+                            <p class="about-card__title">Junior Front-end Developer</p>
+                        </div>
 
-                        <div class="grid-block__item s-about__intro">
-                            <p class="lead">
-                    En la intersección entre creatividad y funcionalidad, desarrollo interfaces que no solo se ven bien, sino que también ofrecen experiencias claras y útiles. Mi trabajo combina investigación cuidadosa, sistemas de diseño intuitivos y una narrativa visual sólida para dar vida a soluciones digitales que resuelven problemas reales.
-
+                        <!-- Main content -->
+                        <div class="about-main" data-rb-reveal="right">
+                            <p class="about-intro">
+                    En la intersección entre creatividad y funcionalidad, desarrollo interfaces que no solo se ven bien, sino que también ofrecen experiencias claras y útiles.
                             </p>
-                        </div> <!--end s-about__intro -->
 
-                        <div class="grid-block__item s-about__main">
-                            <p>
-                            Durante los últimos años he trabajado en proyectos que van desde pequeños emprendimientos hasta equipos en crecimiento, creando interfaces flexibles, dando forma a identidades digitales memorables y desarrollando productos web fluidos. Mi enfoque se basa en la empatía, la claridad y el propósito, siempre colocando al usuario en el centro de cada experiencia. Fuera del código, me encontrarás explorando nuevas ideas, investigando tendencias emergentes en desarrollo y diseño, o compartiendo conocimientos con quienes están iniciando en el mundo tecnológico.
+                            <p class="about-text">
+                            Durante los últimos años he trabajado en proyectos que van desde pequeños emprendimientos hasta equipos en crecimiento, creando interfaces flexibles y desarrollando productos web fluidos.
                             </p>
-                    
-                            <p>
-                            Ya sea perfeccionando una interfaz o creando una identidad digital desde cero, disfruto transformar ideas en experiencias cohesivas y atractivas. Me enfoco en conectar diseño y desarrollo, asegurándome de que cada detalle —desde la tipografía hasta la interacción— tenga un propósito claro e intencional. Construyamos juntos algo significativo.
-                            
+
+                            <p class="about-text">
+                            Mi enfoque se basa en la empatía, la claridad y el propósito, siempre colocando al usuario en el centro de cada experiencia.
 
                             <div class="available-block-wrap">
                                 <div class="available-block pulse">
@@ -144,9 +152,9 @@
                                     <span class="available-text">Accepting New Projects</span>
                                 </div> 
                             </div> <!--end available-block-wrap -->                            
-                        </div> <!--end s-about__main -->
+                        </div> <!--end about-main -->
 
-                    </div> <!--end grid-block -->
+                    </div> <!--end s-about-content -->
 
                 </div> <!-- end s-about__inner -->
 
@@ -156,12 +164,12 @@
 
                 <div class="row s-profile-block__content">
 
-                    <div class="column xl-4 md-12 s-profile-block__content-start">
+                    <div class="column xl-4 md-12 s-profile-block__content-start" data-rb-reveal>
                        <h2 data-num="02" class="section-title">Experiencia</h2> 
                     </div> <!-- end s-profile-block__content-start -->
 
                     <div class="column xl-8 md-12 s-profile-block__content-end">
-                        <div class="grid-cols info-list">
+                        <div class="grid-cols info-list" data-rb-stagger>
                             <div class="grid-cols__column info-card info-card--work">
                                 <div class="info-card__header">
                                     <h5 class="info-card__title">Junior Front-end developer</h5>
@@ -216,12 +224,12 @@
 
                 <div class="row s-profile-block__content">
 
-                    <div class="column xl-4 md-12 s-profile-block__content-start">
+                    <div class="column xl-4 md-12 s-profile-block__content-start" data-rb-reveal>
                        <h2 data-num="03" class="section-title">Educación</h2> 
                     </div> <!-- end s-profile-block__content-start -->
 
                     <div class="column xl-8 md-12 s-profile__content-end">
-                        <div class="grid-cols info-list">
+                        <div class="grid-cols info-list" data-rb-stagger>
                             <div class="grid-cols__column info-card info-card--education">
                                 <div class="info-card__header">
                                     <h5 class="info-card__title">Técnico en Ingeniería de Software</h5>
@@ -284,12 +292,12 @@
 
                 <div class="row s-profile-block__content">
 
-                    <div class="column xl-4 md-12 s-profile-block__content-start">
-                       <h2 data-num="04" class="section-title">Que es lo hago</h2> 
+                    <div class="column xl-4 md-12 s-profile-block__content-start" data-rb-reveal>
+                       <h2 data-num="04" class="section-title">Lo que hago</h2> 
                     </div> <!-- end s-profile-block__content-start -->
 
                     <div class="column xl-8 md-12 s-profile-block__content-end">
-                        <div class="grid-cols info-list info-list--services">
+                        <div class="grid-cols info-list info-list--services" data-rb-stagger>
 
                             <div class="grid-cols__column info-card info-card--services">
                                 <div class="info-card__header">
@@ -351,22 +359,22 @@
                 <div class="row">
                     <div class="column xl-4 md-12">                        
                     </div>
-                    <div class="column xl-8 md-12 stats-group">
+                    <div class="column xl-8 md-12 stats-group" data-rb-stagger>
                         <div class="stat-item">
-                            <div class="stat-item__value">12+</div>
-                            <div class="stat-item__label">Projectos<br> Completados</div>
+                            <div class="stat-item__value" data-target="12" data-suffix="+">0</div>
+                            <div class="stat-item__label">Proyectos<br>Completados</div>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-item__value">99%</div>
-                            <div class="stat-item__label">Client<br> Return Rate</div>
+                            <div class="stat-item__value" data-target="99" data-suffix="%">0</div>
+                            <div class="stat-item__label">Satisfacción<br>de Clientes</div>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-item__value">57+</div>
-            <div class="stat-item__label">reseñas<br>Positivas</div>
+                            <div class="stat-item__value" data-target="57" data-suffix="+">0</div>
+                            <div class="stat-item__label">Reseñas<br>Positivas</div>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-item__value">5+</div>
-                            <div class="stat-item__label">Clientes<br> Satisfechos</div>
+                            <div class="stat-item__value" data-target="5" data-suffix="+">0</div>
+                            <div class="stat-item__label">Clientes<br>Satisfechos</div>
                         </div>                        
                     </div> <!-- end stats-group -->
                 </div>
@@ -382,10 +390,10 @@
 
             <div class="container">               
                 <div class="row s-works__header">
-                    <div class="column xl-4 md-12 s-works__header-start">
+                    <div class="column xl-4 md-12 s-works__header-start" data-rb-reveal>
                         <h2 data-num="05" class="section-title">Proyectos Destacados</h2>
                     </div>
-                    <div class="column xl-8 md-12 s-works__header-end">
+                    <div class="column xl-8 md-12 s-works__header-end" data-rb-reveal="right">
                         <p class="lead">
                        Una selección de trabajos que reflejan mi enfoque en la claridad visual, el diseño web moderno y la comunicación digital efectiva. Cada proyecto combina programación front-end, identidad visual y creatividad aplicada, mostrando cómo transformo ideas en experiencias digitales simples, funcionales y atractivas.
                         </p>
@@ -395,12 +403,12 @@
 
             <div class="container portfolio-group-wrap">
                 
-                <div class="grid-block portfolio-group">
+                    <div class="portfolio-grid">
 
-                    <div class="portfolio-item portfolio-item--featured" data-title="ABPEREIRA" data-images="images\folio\featured-beauty-faith@2x.jpg" data-client="Alabaster" data-date="2023" data-link="https://behance.net/">   
+                    <div class="portfolio-item portfolio-item--featured" data-title="ABPEREIRA" data-images="images/folio/6.png" data-client="ABPEREIRA Company" data-date="2023" data-link="https://behance.net/">   
                         <a href="#0" class="portfolio-item__link" aria-label="View Project details">
-                            <img src="images\folio\featured-beauty-faith.jpg" srcset="images\folio\featured-beauty-faith.jpg 1x, 
-                                     images\folio\featured-beauty-faith@2x.jpg 2x" alt="Beauty & Faith Thumbnail " class="portfolio-item__thumbnail">
+                            <img src="images/folio/6.png" srcset="images/folio/6.png 1x, 
+                                     images/folio/6.png 2x" alt="ABPEREIRA Thumbnail " class="portfolio-item__thumbnail">
                             <span class="portfolio-item__title">ABPEREIRA</span>
                         </a> <!-- portfolio-item__link -->  
 
@@ -418,10 +426,10 @@
                         </div> <!-- portfolio-item__details -->                                 
                     </div>   
 
-                    <div class="portfolio-item" data-title="Aurea House" data-images="images\folio\tropical@2x.jpg" data-client="Aurea Co." data-date="2022" data-link="https://behance.net/">  
+                    <div class="portfolio-item" data-title="Aurea House" data-images="images/folio/1.png" data-client="Aurea House" data-date="2022" data-link="https://behance.net/">  
                         <a href="#0" class="portfolio-item__link" aria-label="View Project details">
-                            <img src="images\folio\tropical.jpg" srcset="images\folio\tropical.jpg 1x, 
-                                     images\folio\tropical@2x.jpg 2x" alt="Tropical Thumbnail " class="portfolio-item__thumbnail">
+                            <img src="images/folio/1.png" srcset="images/folio/1.png 1x, 
+                                     images/folio/1.png 2x" alt="Aurea House Thumbnail " class="portfolio-item__thumbnail">
                             <span class="portfolio-item__title">Aurea House</span>
                         </a>  <!-- portfolio-item__link -->  
 
@@ -429,6 +437,7 @@
                             <div class="portfolio-item__description">
                                 <p>
                                Creación de un catálogo digital para una marca de electrodomésticos. Diseño responsivo y moderno, con énfasis en accesibilidad y experiencia de compra intuitiva.
+                                </p>
                             </div>
                             <ul class="portfolio-item__services">
                                 <li>diseño de marketing</li>
@@ -437,10 +446,10 @@
                         </div> <!-- portfolio-item__details -->  
                     </div>
                     
-                    <div class="portfolio-item" data-title="Catalogo de Marketing" data-images="images\folio\grayscale@2x.jpg, images\folio\grayscale2@.jpg, images\folio\grayscale3@.jpg" data-client="" data-date="2024">  
+                    <div class="portfolio-item" data-title="Catalogo de Marketing" data-images="images/folio/3.png" data-client="Proyecto de Marketing" data-date="2024">  
                         <a href="#0" class="portfolio-item__link" aria-label="View Project details">
-                            <img src="images\folio\grayscale.jpg" srcset="images\folio\grayscale.jpg 1x, 
-                                      images\folio\grayscale.jpg 2x" alt="Grayscale Thumbnail" class="portfolio-item__thumbnail">
+                            <img src="images/folio/3.png" srcset="images/folio/3.png 1x, 
+                                      images/folio/3.png 2x" alt="Catalogo de Marketing Thumbnail" class="portfolio-item__thumbnail">
                             <span class="portfolio-item__title">Catalogo de Marketing Digital</span>
                         </a> <!-- portfolio-item__link -->  
 
@@ -457,10 +466,10 @@
                         </div> <!-- portfolio-item__details -->   
                     </div>
                 
-                    <div class="portfolio-item" data-title="PRISMA 3D" data-images="images\folio\duality@2x.jpg" data-client="PRISMA 3D" data-date="2019" data-link="https://behance.net/">  
+                    <div class="portfolio-item" data-title="PRISMA 3D" data-images="images/folio/5.png" data-client="PRISMA 3D" data-date="2019" data-link="https://behance.net/">  
                         <a href="#0" class="portfolio-item__link" aria-label="View Project details">
-                            <img src="images\folio\duality.jpg" srcset="images\folio\duality.jpg 1x, 
-                                     images\folio\duality.jpg 2x" alt="Duality Thumbnail " class="portfolio-item__thumbnail">
+                            <img src="images/folio/5.png" srcset="images/folio/5.png 1x, 
+                                     images/folio/5.png 2x" alt="PRISMA 3D Thumbnail " class="portfolio-item__thumbnail">
                             <span class="portfolio-item__title">PRISMA 3D</span>
                         </a>  <!-- portfolio-item__link -->  
 
@@ -477,10 +486,10 @@
                         </div> <!-- portfolio-item__details -->    
                     </div>
                 
-                    <div class="portfolio-item" data-title="Proximamente" data-images="images\folio\sphere@2x.jpg" data-client="" data-date="2025" data-link="https://behance.net/">  
+                    <div class="portfolio-item" data-title="Proximamente" data-images="images/folio/4.png" data-client="" data-date="2025" data-link="https://behance.net/">  
                         <a href="#0" class="portfolio-item__link" aria-label="View Project details">
-                            <img src="images\folio\sphere.jpg" srcset="images\folio\sphere.jpg 1x, 
-                                     images\folio\sphere.jpg2x" alt="Sphere Thumbnail " class="portfolio-item__thumbnail">
+                            <img src="images/folio/4.png" srcset="images/folio/4.png 1x, 
+                                     images/folio/4.png 2x" alt="Proximamente Thumbnail " class="portfolio-item__thumbnail">
                             <span class="portfolio-item__title">Proximamente</span>
                         </a>  <!-- portfolio-item__link -->  
 
@@ -498,7 +507,7 @@
                             </ul>
                         </div> <!-- portfolio-item__details -->    
                     </div>                 
-                </div> <!-- end portfolio-group -->
+                </div> <!-- end portfolio-grid -->
             </div> <!-- end portfolio-group-wrap -->             
             
         </section> <!--end s-works -->    
@@ -510,8 +519,8 @@
 
             <div class="row s-footer__top">
 
-                <div class="column xl-6 md-12 s-footer__top-start">
-                    <h5 class="footer-overline">Trabajamos Juntos</h5>
+                <div class="column xl-6 md-12 s-footer__top-start" data-rb-reveal>
+                    <h5 class="footer-overline">Trabajemos Juntos</h5>
                     <p class="lead">
                         Ya sea que estés lanzando un nuevo proyecto web, buscando renovar tu presencia digital o quieras colaborar en ideas creativas, siempre estoy abierto a nuevas oportunidades y conexiones.
                     </p>
@@ -548,8 +557,8 @@
 
                 <div class="column xl-6 tab-12 s-footer__bottom-start">
                     <p class="ss-copyright">
-                        <span>© Abrahan 2025</span> 
-                        <span>Diseño por <a href="#">Abrahan</a></span>
+                        <span>© Abrahan Navarro 2025</span> 
+                        <span>Diseño por <a href="#">Abrahan Navarro</a></span>
                     </p>
                 </div>
 
@@ -575,49 +584,37 @@
 
     <!-- portfolio modal
     ================================================== -->
-    <div class="modal" id="portfolio-modal" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
-                
-        <button class="modal__close-btn" aria-label="Close modal"></button>
-
+    <div id="portfolio-modal" class="modal" aria-hidden="true" style="display: none;">
         <div class="modal__content">
-            <div class="modal__image-container" id="modal-image-container"></div>
-            <div class="modal__text-container" id="modal-text-container">
-                
-                <h3 class="modal__title" id="modal-title"></h3>
-                <div class="modal__description-text" id="modal-description-text"></div>
+            <button class="modal__close-btn" type="button" aria-label="Cerrar detalle de proyecto"></button>
 
-                <div class="modal__info-group grid-cols" id="modal-info-group"> 
-                    <div class="modal__info grid-cols__column">
-                        <h5>Services</h5>
-                        <ul id="modal-services"></ul>
-                    </div>                     
-                    <div class="modal__info grid-cols__column">
-                        <h5>Client</h5>
-                        <p id="modal-client"></p>
-                    </div>
-                    <div class="modal__info grid-cols__column">
-                        <h5>Date</h5>
-                        <p id="modal-date"></p>
-                    </div>
-                    <div class="modal__info grid-cols__column modal__link-container" id="modal-link-container">
-                        <p>
-                            <a class="modal__link" id="modal-link" href="#" target="_blank">
-                                Project Link
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">&lt;!--!  Atomicons Free 1.00 by @atisalab License - https://atomicons.vercel.app/license/ (Icons: CC BY 4.0) Copyright 2021 Atomicons --&gt;<polyline points="17 14 17 7 10 7"></polyline><line x1="7" y1="17" x2="17" y2="7"></line></svg>
-                            </a>
-                        </p>
-                    </div>
-                </div> <!-- end modal__info-group -->
+            <div id="modal-image-container" class="modal__images"></div>
 
-            </div> <!-- end modal__text-container -->
-        </div> <!-- end modal__content -->
-    </div> <!-- end modal -->
+            <div class="modal__text-container">
+                <h3 id="modal-title" class="modal__title"></h3>
+                <div id="modal-description-text" class="modal__description"></div>
+
+                <h5>Cliente</h5>
+                <p id="modal-client"></p>
+
+                <h5>Servicios</h5>
+                <ul id="modal-services"></ul>
+
+                <h5>Fecha</h5>
+                <p id="modal-date"></p>
+
+                <p id="modal-link-container" style="display: none;">
+                    <a id="modal-link" href="#0" target="_blank" rel="noopener noreferrer">Ver proyecto</a>
+                </p>
+            </div>
+        </div>
+    </div>
 
 
     <!-- Java Script
     ================================================== -->
-    <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/rebranding.js"></script>
 
 </body>
 </html>
