@@ -1,6 +1,6 @@
 /* ===================================================================
  *
- *  ABRAHAN NAVARRO PEREIRA — REBRANDING ANIMATIONS
+ *  NATHON ABRAHAN NAVARRO PEREIRA — REBRANDING ANIMATIONS
  *  Versión 2.0
  *
  * =================================================================== */
