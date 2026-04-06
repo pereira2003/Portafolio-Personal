@@ -529,119 +529,115 @@
     };
 
 
-   /* desktop projects carousel
+   /* portfolio desktop carousel
     * ---------------------------------------------------- */
-    const ssProjectsCarousel = function () {
+    const ssPortfolioCarousel = function () {
 
-        const carousel = document.querySelector('.projects-carousel');
-        if (!carousel) return;
+        const carousel = document.getElementById('portfolio-carousel');
+        const viewport = document.querySelector('.portfolio-carousel__viewport');
+        const track = document.getElementById('portfolio-track');
+        const prevBtn = document.getElementById('portfolio-prev');
+        const nextBtn = document.getElementById('portfolio-next');
+        const dotsWrap = document.getElementById('portfolio-dots');
 
-        const track = carousel.querySelector('.portfolio-grid');
-        const items = Array.from(carousel.querySelectorAll('.portfolio-item'));
-        const prevBtn = carousel.querySelector('.projects-carousel__nav--prev');
-        const nextBtn = carousel.querySelector('.projects-carousel__nav--next');
-        const dotsWrap = carousel.querySelector('.projects-carousel__dots');
+        if (!(carousel && viewport && track && prevBtn && nextBtn && dotsWrap)) return;
 
-        if (!track || items.length < 2 || !prevBtn || !nextBtn || !dotsWrap) return;
+        const items = Array.from(track.querySelectorAll('.portfolio-item'));
+        if (!items.length) return;
 
-        let index = 0;
-        let maxIndex = 0;
+        let page = 0;
+        let pages = 1;
+        const perView = 3;
 
-        function getPerView() {
-            if (window.matchMedia('(min-width: 1280px)').matches) return 3;
-            if (window.matchMedia('(min-width: 992px)').matches) return 2;
-            return 1;
+        function getGapPx() {
+            return parseFloat(window.getComputedStyle(track).gap || '0') || 0;
         }
 
-        function isDesktopCarousel() {
-            return window.matchMedia('(min-width: 992px)').matches;
+        function isMobile() {
+            return window.matchMedia('(max-width: 900px)').matches;
         }
 
-        function buildDots() {
+        function renderDots() {
             dotsWrap.innerHTML = '';
-
-            for (let i = 0; i <= maxIndex; i++) {
+            for (let i = 0; i < pages; i += 1) {
                 const dot = document.createElement('button');
                 dot.type = 'button';
-                dot.className = 'projects-carousel__dot' + (i === index ? ' is-active' : '');
-                dot.setAttribute('aria-label', 'Ir al grupo ' + (i + 1));
+                dot.className = 'portfolio-carousel__dot' + (i === page ? ' is-active' : '');
+                dot.setAttribute('aria-label', 'Ir a pagina ' + (i + 1));
                 dot.addEventListener('click', function () {
-                    index = i;
-                    update();
+                    page = i;
+                    updatePosition();
                 });
                 dotsWrap.appendChild(dot);
             }
         }
 
-        function updateButtons() {
-            prevBtn.disabled = index <= 0;
-            nextBtn.disabled = index >= maxIndex;
-        }
+        function updateControls() {
+            prevBtn.disabled = page <= 0;
+            nextBtn.disabled = page >= pages - 1;
 
-        function updateDots() {
-            const dots = dotsWrap.querySelectorAll('.projects-carousel__dot');
-            dots.forEach(function (dot, i) {
-                dot.classList.toggle('is-active', i === index);
+            Array.from(dotsWrap.children).forEach(function (dot, i) {
+                dot.classList.toggle('is-active', i === page);
             });
         }
 
-        function update() {
-            const perView = getPerView();
-            maxIndex = Math.max(0, items.length - perView);
-            index = Math.min(Math.max(index, 0), maxIndex);
+        function updatePosition() {
+            const gap = getGapPx();
+            const cardWidth = items[0].getBoundingClientRect().width;
+            const pageWidth = (cardWidth * perView) + (gap * (perView - 1));
+            track.style.transform = 'translate3d(' + (-pageWidth * page) + 'px, 0, 0)';
+            updateControls();
+        }
 
-            if (!isDesktopCarousel()) {
-                track.style.transform = 'none';
-                prevBtn.style.display = 'none';
-                nextBtn.style.display = 'none';
-                dotsWrap.style.display = 'none';
-                return;
-            }
+        function setupDesktop() {
+            const gap = getGapPx();
+            const viewportWidth = viewport.clientWidth;
+            const cardWidth = (viewportWidth - (gap * (perView - 1))) / perView;
 
-            prevBtn.style.display = '';
-            nextBtn.style.display = '';
-            dotsWrap.style.display = '';
+            items.forEach(function (item) {
+                item.style.flex = '0 0 ' + cardWidth + 'px';
+            });
 
-            const firstLeft = items[0].offsetLeft;
-            const targetLeft = items[index].offsetLeft;
-            track.style.transform = 'translate3d(' + (firstLeft - targetLeft) + 'px, 0, 0)';
+            pages = Math.max(1, Math.ceil(items.length / perView));
+            page = Math.min(page, pages - 1);
+            renderDots();
+            updatePosition();
+        }
 
-            if (dotsWrap.childElementCount !== maxIndex + 1) {
-                buildDots();
+        function setupMobile() {
+            track.style.transform = 'none';
+            items.forEach(function (item) {
+                item.style.flex = '';
+            });
+            dotsWrap.innerHTML = '';
+            prevBtn.disabled = true;
+            nextBtn.disabled = true;
+        }
+
+        function refresh() {
+            if (isMobile()) {
+                setupMobile();
             } else {
-                updateDots();
+                setupDesktop();
             }
-
-            updateButtons();
         }
 
         prevBtn.addEventListener('click', function () {
-            index -= 1;
-            update();
+            if (page > 0) {
+                page -= 1;
+                updatePosition();
+            }
         });
 
         nextBtn.addEventListener('click', function () {
-            index += 1;
-            update();
-        });
-
-        carousel.addEventListener('keydown', function (event) {
-            if (!isDesktopCarousel()) return;
-
-            if (event.key === 'ArrowLeft') {
-                index -= 1;
-                update();
-            }
-
-            if (event.key === 'ArrowRight') {
-                index += 1;
-                update();
+            if (page < pages - 1) {
+                page += 1;
+                updatePosition();
             }
         });
 
-        window.addEventListener('resize', update);
-        window.addEventListener('load', update);
-        update();
+        window.addEventListener('resize', refresh);
+        refresh();
     };
 
 
@@ -656,7 +652,7 @@
         ssAlertBoxes();
         ssSmoothScroll();
         ssPortfolioModal();
-        ssProjectsCarousel();
+        ssPortfolioCarousel();
 
     })();
 

@@ -401,9 +401,14 @@
                 </div><!-- end s-works__header -->        
             </div> <!-- end container -->
 
-            <div class="container portfolio-group-wrap projects-carousel" aria-label="Carrusel de proyectos destacados">
-                
-                    <div class="portfolio-grid">
+            <div class="container portfolio-group-wrap">
+                <div class="portfolio-carousel" id="portfolio-carousel">
+                    <button type="button" class="portfolio-carousel__nav portfolio-carousel__nav--prev" id="portfolio-prev" aria-label="Proyecto anterior">
+                        <span aria-hidden="true">&lsaquo;</span>
+                    </button>
+
+                    <div class="portfolio-carousel__viewport">
+                        <div class="portfolio-grid" id="portfolio-track">
 
                     <div class="portfolio-item portfolio-item--featured" data-title="ABPEREIRA" data-images="images/folio/6.png" data-client="ABPEREIRA Company" data-date="2023" data-link="https://behance.net/">   
                         <a href="#0" class="portfolio-item__link" aria-label="View Project details">
@@ -536,18 +541,15 @@
                                 <li>diseño de productos</li>
                             </ul>
                         </div> <!-- portfolio-item__details -->    
-                    </div>                 
-                </div> <!-- end portfolio-grid -->
+                        </div>                 
+                    </div> <!-- end portfolio-grid -->
 
-                <div class="projects-carousel__controls" aria-label="Controles del carrusel de proyectos">
-                    <button type="button" class="projects-carousel__nav projects-carousel__nav--prev" aria-label="Proyecto anterior">
-                        <span aria-hidden="true">&#10094;</span>
+                    <button type="button" class="portfolio-carousel__nav portfolio-carousel__nav--next" id="portfolio-next" aria-label="Siguiente proyecto">
+                        <span aria-hidden="true">&rsaquo;</span>
                     </button>
-                    <div class="projects-carousel__dots" aria-label="Paginacion de proyectos"></div>
-                    <button type="button" class="projects-carousel__nav projects-carousel__nav--next" aria-label="Proyecto siguiente">
-                        <span aria-hidden="true">&#10095;</span>
-                    </button>
-                </div>
+
+                    <div class="portfolio-carousel__dots" id="portfolio-dots" aria-label="Paginacion de proyectos"></div>
+                </div> <!-- end portfolio-carousel -->
             </div> <!-- end portfolio-group-wrap -->             
             
         </section> <!--end s-works -->    
