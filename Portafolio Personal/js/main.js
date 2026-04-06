@@ -622,22 +622,53 @@
             }
         }
 
+        // Autoplay
+        let autoTimer = null;
+
+        function startAutoplay() {
+            if (isMobile()) return;
+            clearInterval(autoTimer);
+            autoTimer = setInterval(function () {
+                if (isMobile()) { clearInterval(autoTimer); return; }
+                page = (page >= pages - 1) ? 0 : page + 1;
+                updatePosition();
+            }, 3500);
+        }
+
+        function stopAutoplay() {
+            clearInterval(autoTimer);
+        }
+
+        carousel.addEventListener('mouseenter', stopAutoplay);
+        carousel.addEventListener('mouseleave', function () { if (!isMobile()) startAutoplay(); });
+        carousel.addEventListener('touchstart', stopAutoplay, { passive: true });
+
         prevBtn.addEventListener('click', function () {
+            stopAutoplay();
             if (page > 0) {
                 page -= 1;
                 updatePosition();
             }
+            startAutoplay();
         });
 
         nextBtn.addEventListener('click', function () {
+            stopAutoplay();
             if (page < pages - 1) {
                 page += 1;
                 updatePosition();
             }
+            startAutoplay();
         });
 
-        window.addEventListener('resize', refresh);
+        window.addEventListener('resize', function () {
+            stopAutoplay();
+            refresh();
+            if (!isMobile()) startAutoplay();
+        });
+
         refresh();
+        if (!isMobile()) startAutoplay();
     };
 
 
