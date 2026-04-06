@@ -494,8 +494,16 @@
         //
         modalEls.portfolioItems.forEach(function (item) {
             const link = item.querySelector('.portfolio-item__link');
+            const moreBtn = item.querySelector('.portfolio-item__more-btn');
             if (link) {
                 link.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    openModalWithData(item);
+                });
+            }
+
+            if (moreBtn) {
+                moreBtn.addEventListener('click', function (event) {
                     event.preventDefault();
                     openModalWithData(item);
                 });
@@ -521,6 +529,122 @@
     };
 
 
+   /* desktop projects carousel
+    * ---------------------------------------------------- */
+    const ssProjectsCarousel = function () {
+
+        const carousel = document.querySelector('.projects-carousel');
+        if (!carousel) return;
+
+        const track = carousel.querySelector('.portfolio-grid');
+        const items = Array.from(carousel.querySelectorAll('.portfolio-item'));
+        const prevBtn = carousel.querySelector('.projects-carousel__nav--prev');
+        const nextBtn = carousel.querySelector('.projects-carousel__nav--next');
+        const dotsWrap = carousel.querySelector('.projects-carousel__dots');
+
+        if (!track || items.length < 2 || !prevBtn || !nextBtn || !dotsWrap) return;
+
+        let index = 0;
+        let maxIndex = 0;
+
+        function getPerView() {
+            if (window.matchMedia('(min-width: 1280px)').matches) return 3;
+            if (window.matchMedia('(min-width: 992px)').matches) return 2;
+            return 1;
+        }
+
+        function isDesktopCarousel() {
+            return window.matchMedia('(min-width: 992px)').matches;
+        }
+
+        function buildDots() {
+            dotsWrap.innerHTML = '';
+
+            for (let i = 0; i <= maxIndex; i++) {
+                const dot = document.createElement('button');
+                dot.type = 'button';
+                dot.className = 'projects-carousel__dot' + (i === index ? ' is-active' : '');
+                dot.setAttribute('aria-label', 'Ir al grupo ' + (i + 1));
+                dot.addEventListener('click', function () {
+                    index = i;
+                    update();
+                });
+                dotsWrap.appendChild(dot);
+            }
+        }
+
+        function updateButtons() {
+            prevBtn.disabled = index <= 0;
+            nextBtn.disabled = index >= maxIndex;
+        }
+
+        function updateDots() {
+            const dots = dotsWrap.querySelectorAll('.projects-carousel__dot');
+            dots.forEach(function (dot, i) {
+                dot.classList.toggle('is-active', i === index);
+            });
+        }
+
+        function update() {
+            const perView = getPerView();
+            maxIndex = Math.max(0, items.length - perView);
+            index = Math.min(Math.max(index, 0), maxIndex);
+
+            if (!isDesktopCarousel()) {
+                track.style.transform = 'none';
+                prevBtn.style.display = 'none';
+                nextBtn.style.display = 'none';
+                dotsWrap.style.display = 'none';
+                return;
+            }
+
+            prevBtn.style.display = '';
+            nextBtn.style.display = '';
+            dotsWrap.style.display = '';
+
+            const firstLeft = items[0].offsetLeft;
+            const targetLeft = items[index].offsetLeft;
+            track.style.transform = 'translate3d(' + (firstLeft - targetLeft) + 'px, 0, 0)';
+
+            if (dotsWrap.childElementCount !== maxIndex + 1) {
+                buildDots();
+            } else {
+                updateDots();
+            }
+
+            updateButtons();
+        }
+
+        prevBtn.addEventListener('click', function () {
+            index -= 1;
+            update();
+        });
+
+        nextBtn.addEventListener('click', function () {
+            index += 1;
+            update();
+        });
+
+        carousel.addEventListener('keydown', function (event) {
+            if (!isDesktopCarousel()) return;
+
+            if (event.key === 'ArrowLeft') {
+                index -= 1;
+                update();
+            }
+
+            if (event.key === 'ArrowRight') {
+                index += 1;
+                update();
+            }
+        });
+
+        window.addEventListener('resize', update);
+        window.addEventListener('load', update);
+        update();
+    };
+
+
    /* Initialize
     * ------------------------------------------------------ */
     (function ssInit() {
@@ -532,6 +656,7 @@
         ssAlertBoxes();
         ssSmoothScroll();
         ssPortfolioModal();
+        ssProjectsCarousel();
 
     })();
 
